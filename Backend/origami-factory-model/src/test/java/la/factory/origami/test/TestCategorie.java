@@ -26,7 +26,7 @@ public class TestCategorie {
 		cocotte.setNote((float) 4.5);
 		cocotte.setTempsRea("20 mn");
 		cocotte.setYoutube("www.youtube.com");
-		daoOrigami.save(cocotte);
+		
 		
 		IRepoCategorie daoCategorie = context.getBean(IRepoCategorie.class);
 
@@ -46,14 +46,20 @@ public class TestCategorie {
 		pokemons.setSuperCat(animaux);
 		daoCategorie.save(pokemons);
 		
-		animaux.getOrigamis().add(cocotte);
+		cocotte.getCategories().add(animaux);
 		
-		 
+		
+		daoOrigami.save(cocotte); 
 	
 
 		
 		context.close();
 
+//		System.out.println(animaux.getOrigamis().get(0).getId());
+//
+//		System.out.println(animaux.getId());
+//		
+//		System.out.println(cocotte.getCategories().get(0).getNom());
 
 
 	}

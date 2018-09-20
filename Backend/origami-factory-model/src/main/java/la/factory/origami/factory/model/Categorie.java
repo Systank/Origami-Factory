@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
@@ -28,9 +30,11 @@ public class Categorie {
 	@Column(name = "nom", length = 50)
 	@NotEmpty(message = "Le nom est obligatoire")
 	private String nom;
-	@OneToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "categorie_parent_id")
-	private Categorie SuperCat;
+	private Categorie superCat;
+	@OneToMany(mappedBy = "superCat", fetch=FetchType.LAZY)
+	private List<Categorie> sousCats = new ArrayList<Categorie>();
 	@ManyToMany(mappedBy = "categories", fetch = FetchType.LAZY)
 	private List<Origami> origamis = new ArrayList<Origami>();
 	
@@ -41,11 +45,6 @@ public class Categorie {
 	
 
 
-	public Categorie(String nom, Categorie superCat) {
-		super();
-		this.nom = nom;
-		SuperCat = superCat;
-	}
 
 
 
@@ -69,14 +68,42 @@ public class Categorie {
 	}
 
 
+	
+
 	public Categorie getSuperCat() {
-		return SuperCat;
+		return superCat;
 	}
+
+
+
+
 
 
 	public void setSuperCat(Categorie superCat) {
-		SuperCat = superCat;
+		this.superCat = superCat;
 	}
+
+
+
+
+
+
+	public List<Categorie> getSousCats() {
+		return sousCats;
+	}
+
+
+
+
+
+
+	public void setSousCats(List<Categorie> sousCats) {
+		this.sousCats = sousCats;
+	}
+
+
+
+
 
 
 	public List<Origami> getOrigamis() {

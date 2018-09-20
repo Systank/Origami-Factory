@@ -25,9 +25,12 @@ public class TestOrigami {
 		cocotte.setTempsRea("20 mn");
 		cocotte.setYoutube("www.youtube.com");
 		daoOrigami.save(cocotte);
-
+		
+		
 		
 		context.close();
+		
+		
 	}
 
 }
