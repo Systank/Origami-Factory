@@ -1,4 +1,4 @@
-package la.factory.origamifactory;
+package la.factory.origamifactory.controller;
 
 import java.util.List;
 
@@ -13,41 +13,45 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fasterxml.jackson.annotation.JsonView;
-
-import la.factory.origami.factory.model.Admin;
-import la.factory.origami.factory.repository.IRepoAdmin;
-
+import la.factory.origami.factory.model.Origami;
+import la.factory.origami.factory.repository.IRepoOrigami;
 
 @RestController
-@RequestMapping("/admin")
-public class AdminRestController {
+@RequestMapping("/origami")
+public class OrigamiRestController {
 
 	@Autowired
-	private IRepoAdmin adminRepo;
+	private IRepoOrigami origamiRepo;
 	
 	@GetMapping("")
 	@ResponseBody
-	public List<Admin> list() {
-		return adminRepo.findAll();
+	public List<Origami> list(){
+		return origamiRepo.findAll();
 	}
 	
+	@GetMapping("/origami/{id}")
+	@ResponseBody
+	public List<Origami> group(){
+		return origamiRepo.findOrigamiWithEtapes();
+	}
 	@PostMapping("")
 	@ResponseBody
-	public Admin add(@RequestBody Admin admin) {
-		 adminRepo.save(admin); 
-		 return admin;
+	public Origami add(@RequestBody Origami origami) {
+		origamiRepo.save(origami);
+		
+		return origami;
 	}
-
+	
 	@PutMapping("/{id}")
 	@ResponseBody
-	public Admin edit(@RequestBody Admin admin, @PathVariable Long id) {
-		 adminRepo.save(admin); 
-		 return (Admin) adminRepo.findById(id).get(); 
+	public Origami edit(@RequestBody Origami origami, @PathVariable Long id) {
+		origamiRepo.save(origami);
+
+		return (Origami) origamiRepo.findById(id).get();
 	}
 	
 	@DeleteMapping("/{id}")
-	public void delete(@PathVariable Long id) {
-		adminRepo.deleteById(id);
+	public void  delete(@PathVariable Long id) {
+		origamiRepo.deleteById(id);
 	}
 }

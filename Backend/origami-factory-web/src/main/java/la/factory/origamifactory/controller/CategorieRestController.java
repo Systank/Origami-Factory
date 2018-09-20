@@ -1,4 +1,4 @@
-package la.factory.origamifactory;
+package la.factory.origamifactory.controller;
 
 import java.util.List;
 
@@ -13,45 +13,49 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import la.factory.origami.factory.model.Etape;
-import la.factory.origami.factory.repository.IRepoEtape;
+import com.fasterxml.jackson.annotation.JsonView;
+
+import la.factory.origami.factory.model.Categorie;
+import la.factory.origami.factory.repository.IRepoCategorie;
 
 @RestController
-@RequestMapping("/etape")
-public class EtapeRestController {
+@RequestMapping("/categorie")
+public class CategorieRestController {
 
 	@Autowired
-	private IRepoEtape etapeRepo;
+	private IRepoCategorie categorieRepo;
 	
 	@GetMapping("")
 	@ResponseBody
-	public List<Etape> list(){
-		return etapeRepo.findAll();
+
+	public List<Categorie> list(){
+		return categorieRepo.findAll();
+		
+		
 	}
 	
-	@GetMapping("/origami/{id}")
-	@ResponseBody
-	public List<Etape> group(){
-		return etapeRepo.findEtapeByOrigami();
-	}
 	@PostMapping("")
 	@ResponseBody
-	public Etape add(@RequestBody Etape etape) {
-		etapeRepo.save(etape);
-		
-		return etape;
+	public Categorie add(@RequestBody Categorie categorie) {
+		categorieRepo.save(categorie);
+		return categorie; 
 	}
-	
 	@PutMapping("/{id}")
 	@ResponseBody
-	public Etape edit(@RequestBody Etape etape, @PathVariable Long id) {
-		etapeRepo.save(etape);
-
-		return (Etape) etapeRepo.findById(id).get();
+	public Categorie edit(@RequestBody Categorie categorie, @PathVariable Long id) {
+		categorieRepo.save(categorie);
+		
+		return (Categorie) categorieRepo.findById(id).get();
+		
+	
 	}
 	
 	@DeleteMapping("/{id}")
-	public void  delete(@PathVariable Long id) {
-		etapeRepo.deleteById(id);
+	public void delete(@PathVariable Long id) {
+		categorieRepo.deleteById(id);
 	}
+	
+	
+	
+
 }

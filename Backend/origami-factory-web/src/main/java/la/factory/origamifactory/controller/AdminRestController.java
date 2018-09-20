@@ -1,4 +1,4 @@
-package la.factory.origamifactory;
+package la.factory.origamifactory.controller;
 
 import java.util.List;
 
@@ -15,47 +15,39 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import la.factory.origami.factory.model.Categorie;
-import la.factory.origami.factory.repository.IRepoCategorie;
+import la.factory.origami.factory.model.Admin;
+import la.factory.origami.factory.repository.IRepoAdmin;
+
 
 @RestController
-@RequestMapping("/categorie")
-public class CategorieRestController {
+@RequestMapping("/admin")
+public class AdminRestController {
 
 	@Autowired
-	private IRepoCategorie categorieRepo;
+	private IRepoAdmin adminRepo;
 	
 	@GetMapping("")
 	@ResponseBody
-
-	public List<Categorie> list(){
-		return categorieRepo.findAll();
-		
-		
+	public List<Admin> list() {
+		return adminRepo.findAll();
 	}
 	
 	@PostMapping("")
 	@ResponseBody
-	public Categorie add(@RequestBody Categorie categorie) {
-		categorieRepo.save(categorie);
-		return categorie; 
+	public Admin add(@RequestBody Admin admin) {
+		 adminRepo.save(admin); 
+		 return admin;
 	}
+
 	@PutMapping("/{id}")
 	@ResponseBody
-	public Categorie edit(@RequestBody Categorie categorie, @PathVariable Long id) {
-		categorieRepo.save(categorie);
-		
-		return (Categorie) categorieRepo.findById(id).get();
-		
-	
+	public Admin edit(@RequestBody Admin admin, @PathVariable Long id) {
+		 adminRepo.save(admin); 
+		 return (Admin) adminRepo.findById(id).get(); 
 	}
 	
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable Long id) {
-		categorieRepo.deleteById(id);
+		adminRepo.deleteById(id);
 	}
-	
-	
-	
-
 }
