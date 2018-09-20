@@ -9,7 +9,7 @@ import la.factory.origami.factory.model.Etape;
 
 public interface IRepoEtape extends JpaRepository<Etape, Long>{
 
-	@Query(select e from Etape e left outer join fetch where )
+	@Query("select e from Etape e left outer join fetch e.origami o where e.origami.id = :id")
 	List<Etape> findEtapeByOrigami();
 		
 	
