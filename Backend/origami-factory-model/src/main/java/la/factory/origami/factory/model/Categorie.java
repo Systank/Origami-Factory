@@ -8,7 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
@@ -21,11 +23,13 @@ public class Categorie {
 	
 	@Id
 	@GeneratedValue
+	@Column(name="categorie_id")
     private Long id;
 	@Column(name = "nom", length = 50)
 	@NotEmpty(message = "Le nom est obligatoire")
 	private String nom;
-	@Column(name = "Categorie", length = 100)
+	@OneToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name = "categorie_id")
 	private Categorie SuperCat;
 	@ManyToMany(mappedBy = "categories", fetch = FetchType.LAZY)
 	private List<Origami> origamis = new ArrayList<Origami>();
