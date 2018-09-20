@@ -29,7 +29,7 @@ public class Categorie {
 	@NotEmpty(message = "Le nom est obligatoire")
 	private String nom;
 	@OneToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name = "categorie_id")
+	@JoinColumn(name = "categorie_parent_id")
 	private Categorie SuperCat;
 	@ManyToMany(mappedBy = "categories", fetch = FetchType.LAZY)
 	private List<Origami> origamis = new ArrayList<Origami>();
