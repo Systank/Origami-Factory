@@ -10,7 +10,7 @@ import la.factory.origami.factory.model.Origami;
 
 public interface IRepoOrigami extends JpaRepository<Origami, Long>{
 
-	@Query("select distinct o from Origami o left join fetch o.etapes e left join fetch o.categories c")
+	@Query("select distinct o from Origami o left join fetch o.etapes e")
 	List<Origami> findOrigamiWithEtapesWithCategories();
 
 }
