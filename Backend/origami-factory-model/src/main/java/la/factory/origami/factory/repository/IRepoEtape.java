@@ -1,5 +1,9 @@
 package la.factory.origami.factory.repository;
 
-public interface IRepoEtape {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import la.factory.origami.factory.model.Etape;
+
+public interface IRepoEtape extends JpaRepository<Etape, Long>{
 
 }
