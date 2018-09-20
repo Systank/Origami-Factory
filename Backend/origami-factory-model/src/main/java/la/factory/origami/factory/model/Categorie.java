@@ -26,9 +26,8 @@ public class Categorie {
 	@NotEmpty(message = "Le nom est obligatoire")
 	private String nom;
 	@Column(name = "Categorie", length = 100)
-	@NotEmpty(message = "La catégorie est obligatoire")
 	private Categorie SuperCat;
-	@ManyToMany(mappedBy = "catégories", fetch = FetchType.LAZY)
+	@ManyToMany(mappedBy = "categories", fetch = FetchType.LAZY)
 	private List<Origami> origamis = new ArrayList<Origami>();
 	
 	
