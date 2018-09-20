@@ -42,7 +42,7 @@ public class CategorieRestController {
 	public Categorie detail(@PathVariable Long id) {
 		return categorieRepo.findByIdWithOrigamis(id);
 	}
-	@GetMapping("/{id}")
+	@GetMapping("/autre/{id}")
 	@ResponseBody
 	@JsonView(Views.ViewCategorieWithSousCats.class)
 	public Categorie detail1(@PathVariable Long id) {
