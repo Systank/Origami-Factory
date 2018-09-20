@@ -1,4 +1,4 @@
-package la.factory.origamifactory.controller;
+package la.factory.origami.factory.controller;
 
 import java.util.List;
 
@@ -32,7 +32,7 @@ public class OrigamiRestController {
 	@GetMapping("/origami/{id}")
 	@ResponseBody
 	public List<Origami> group(){
-		return origamiRepo.findOrigamiWithEtapes();
+		return origamiRepo.findOrigamiWithEtapesWithCategories();
 	}
 	@PostMapping("")
 	@ResponseBody

@@ -1,4 +1,4 @@
-package la.factory.origamifactory.controller;
+package la.factory.origami.factory.controller;
 
 import java.util.List;
 
@@ -17,7 +17,6 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import la.factory.origami.factory.model.Categorie;
 import la.factory.origami.factory.model.Views;
-import la.factory.origami.factory.model.Views.ViewCategorieWithSousCats;
 import la.factory.origami.factory.repository.IRepoCategorie;
 
 

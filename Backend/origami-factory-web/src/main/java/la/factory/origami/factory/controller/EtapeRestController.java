@@ -1,4 +1,4 @@
-package la.factory.origamifactory.controller;
+package la.factory.origami.factory.controller;
 
 import java.util.List;
 

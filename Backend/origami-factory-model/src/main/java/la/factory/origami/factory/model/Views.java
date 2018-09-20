@@ -27,5 +27,12 @@ public class Views {
 	public static class ViewEtapeDetail extends ViewEtape {
 		
 	}
+	
+	public static class ViewOrigami extends ViewCommon {
+		
+	}
+	public static class ViewOrigamiDetail extends ViewOrigami {
+		
+	}
 }
 
