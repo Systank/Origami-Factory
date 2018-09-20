@@ -29,7 +29,7 @@ public class Categorie {
 	@NotEmpty(message = "La catégorie est obligatoire")
 	private Categorie SuperCat;
 	@ManyToMany(mappedBy = "catégories", fetch = FetchType.LAZY)
-	private List<Origami> origamis = new ArrayList<>();
+	private List<Origami> origamis = new ArrayList<Origami>();
 	
 	
 	public Categorie() {
