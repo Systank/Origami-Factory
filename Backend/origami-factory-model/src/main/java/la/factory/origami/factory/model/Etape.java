@@ -1,8 +1,12 @@
 package la.factory.origami.factory.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -12,9 +16,14 @@ public class Etape {
 	@Id
 	@GeneratedValue
 	private Long id;
+	@Column(name="numero_etape")
 	private int numeroEtape;
+	@Column(name="description")
 	private String description;
+	@Column(name="image_etape")
 	private String imageEtape;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "origami_id")
 	private Origami origami;
 
 	public Etape() {
