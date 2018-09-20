@@ -3,30 +3,12 @@ Backend/origami-factory-model/\.classpath
 
 Backend/origami-factory-model/\.project
 
-Backend/origami-factory-model/\.settings/org\.eclipse\.jdt\.core\.prefs
-
-Backend/origami-factory-model/\.settings/org\.eclipse\.m2e\.core\.prefs
-
-Backend/origami-factory-model/target/classes/META-INF/maven/la\.factory/origamifactory-model/pom\.xml
-
-Backend/origami-factory-model/target/classes/archetype-resources/pom\.xml
-
-Backend/origami-factory-model/target/classes/archetype-resources/src/main/java/App\.java
-
-Backend/origami-factory-model/target/classes/archetype-resources/src/test/java/AppTest\.java
-
-Backend/origami-factory-model/target/classes/META-INF/MANIFEST\.MF
-
-Backend/origami-factory-model/target/classes/META-INF/maven/archetype\.xml
-
-Backend/origami-factory-model/target/classes/META-INF/maven/la\.factory/origamifactory-model/pom\.properties
+Backend/origami-factory-model/\.settings/
 
 Backend/origamifactory-model/\.project
 
-Backend/origami-factory-model/target/classes/META-INF/maven/la\.factory/origami-factory-model/pom\.properties
+Backend/origami-factory-model/target/
 
-Backend/origami-factory-model/target/classes/META-INF/maven/la\.factory/origami-factory-model/pom\.xml
-
-Backend/origami-factory-model/target/classes/wfdhkjwvlhjgdxmj\.class
+Backend/origami-factory-model/src/main/java/la/factory/origami/factory/model/wdgjsdfnk\.java
 
 Backend/origamifactory-model/bin/\.project
