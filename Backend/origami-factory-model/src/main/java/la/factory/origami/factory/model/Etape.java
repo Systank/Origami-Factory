@@ -9,21 +9,29 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+
 @Entity
 @Table(name = "etape")
 public class Etape {
 
 	@Id
 	@GeneratedValue
+	@JsonView(Views.ViewCommon.class)
 	private Long id;
 	@Column(name="numero_etape")
+	@JsonView(Views.ViewCommon.class)
 	private int numeroEtape;
 	@Column(name="description")
+	@JsonView(Views.ViewCommon.class)
 	private String description;
 	@Column(name="image_etape")
+	@JsonView(Views.ViewCommon.class)
 	private String imageEtape;
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "origami_id")
+	@JsonView(Views.ViewEtapeDetail.class)
 	private Origami origami;
 
 	public Etape() {
