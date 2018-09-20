@@ -37,6 +37,7 @@ public class Categorie {
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "categorie_parent_id")
 	@JsonView(Views.ViewCommon.class)
+	
 	private Categorie superCat;
 	@OneToMany(mappedBy = "superCat", fetch=FetchType.LAZY)
 	@JsonView(Views.ViewCategorieWithSousCats.class)

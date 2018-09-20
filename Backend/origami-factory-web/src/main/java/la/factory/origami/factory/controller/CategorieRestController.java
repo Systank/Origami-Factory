@@ -28,6 +28,7 @@ public class CategorieRestController {
 	@Autowired
 	private IRepoCategorie categorieRepo;
 	
+	
 	@GetMapping("")
 	@ResponseBody
 	@JsonView(Views.ViewCategorie.class)
