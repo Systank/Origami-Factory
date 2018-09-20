@@ -3,6 +3,7 @@ package la.factory.origamifactory;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.fasterxml.jackson.annotation.JsonView;
 
 import la.factory.origami.factory.model.Etape;
 import la.factory.origami.factory.repository.IRepoEtape;
@@ -24,7 +23,13 @@ public class EtapeRestController {
 	@Autowired
 	private IRepoEtape etapeRepo;
 	
-	@GetMapping("/{id}")
+	@GetMapping("")
+	@ResponseBody
+	public List<Etape> list(){
+		return etapeRepo.findAll();
+	}
+	
+	@GetMapping("/origami/{id}")
 	@ResponseBody
 	public List<Etape> group(){
 		return etapeRepo.findEtapeByOrigami();
@@ -43,5 +48,10 @@ public class EtapeRestController {
 		etapeRepo.save(etape);
 
 		return (Etape) etapeRepo.findById(id).get();
+	}
+	
+	@DeleteMapping("/{id}")
+	public void  delete(@PathVariable Long id) {
+		etapeRepo.deleteById(id);
 	}
 }
