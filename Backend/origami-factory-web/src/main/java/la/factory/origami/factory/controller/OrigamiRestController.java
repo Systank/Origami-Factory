@@ -13,7 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import la.factory.origami.factory.model.Origami;
+import la.factory.origami.factory.model.Views;
 import la.factory.origami.factory.repository.IRepoOrigami;
 
 @RestController
@@ -25,6 +28,7 @@ public class OrigamiRestController {
 	
 	@GetMapping("")
 	@ResponseBody
+	@JsonView(Views.ViewCommon.class)
 	public List<Origami> list(){
 		return origamiRepo.findAll();
 	}
