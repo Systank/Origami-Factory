@@ -7,9 +7,15 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
 @Table(name = "origami")
@@ -37,8 +43,6 @@ public class Origami {
 	private String imageOri; 
 	
 	
-	private List<Etape> etapes = new ArrayList<Etape>();
-	private List<Categorie> categories = new ArrayList<Categorie>();
 	
 	
 	public Long getId() {
@@ -95,6 +99,12 @@ public class Origami {
 	public void setImageOri(String imageOri) {
 		this.imageOri = imageOri;
 	}
+	@OneToMany(mappedBy = "origami", fetch=FetchType.EAGER)
+	private List<Etape> etapes = new ArrayList<Etape>();
+	@ManyToMany
+	@JoinTable(name = "origami_categorie", joinColumns = @JoinColumn(name = "origami_id"), inverseJoinColumns = @JoinColumn(name = "categorie_id"), uniqueConstraints = @UniqueConstraint(columnNames = {
+			"origami_id", "categorie_id" }))
+	private List<Categorie> categories = new ArrayList<Categorie>();
 	public List<Etape> getEtapes() {
 		return etapes;
 	}
@@ -107,6 +117,8 @@ public class Origami {
 	public void setCategories(List<Categorie> categories) {
 		this.categories = categories;
 	}
+	
+	
 	
 	
 }
