@@ -16,6 +16,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 
 
 
@@ -26,16 +28,21 @@ public class Categorie {
 	@Id
 	@GeneratedValue
 	@Column(name="categorie_id")
+	@JsonView(Views.ViewCommon.class)
     private Long id;
 	@Column(name = "nom", length = 50)
 	@NotEmpty(message = "Le nom est obligatoire")
+	@JsonView(Views.ViewCommon.class)
 	private String nom;
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "categorie_parent_id")
+	@JsonView(Views.ViewCommon.class)
 	private Categorie superCat;
 	@OneToMany(mappedBy = "superCat", fetch=FetchType.LAZY)
+	@JsonView(Views.ViewCategorieWithSousCats.class)
 	private List<Categorie> sousCats = new ArrayList<Categorie>();
 	@ManyToMany(mappedBy = "categories", fetch = FetchType.LAZY)
+	@JsonView(Views.ViewCategorieWithOrigamis.class)
 	private List<Origami> origamis = new ArrayList<Origami>();
 	
 	

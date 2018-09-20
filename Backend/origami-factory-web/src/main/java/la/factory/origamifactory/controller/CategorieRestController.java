@@ -16,7 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import la.factory.origami.factory.model.Categorie;
+import la.factory.origami.factory.model.Views;
+import la.factory.origami.factory.model.Views.ViewCategorieWithSousCats;
 import la.factory.origami.factory.repository.IRepoCategorie;
+
+
 
 @RestController
 @RequestMapping("/categorie")
@@ -27,21 +31,35 @@ public class CategorieRestController {
 	
 	@GetMapping("")
 	@ResponseBody
-
+	@JsonView(Views.ViewCategorie.class)
 	public List<Categorie> list(){
 		return categorieRepo.findAll();
 		
 		
 	}
+	@GetMapping("/{id}")
+	@ResponseBody
+	@JsonView(Views.ViewCategorieWithOrigamis.class)
+	public Categorie detail(@PathVariable Long id) {
+		return categorieRepo.findByIdWithOrigamis(id);
+	}
+	@GetMapping("/{id}")
+	@ResponseBody
+	@JsonView(Views.ViewCategorieWithSousCats.class)
+	public Categorie detail1(@PathVariable Long id) {
+		return categorieRepo.findByIdWithCategories(id);
+	}
 	
 	@PostMapping("")
 	@ResponseBody
+	@JsonView(Views.ViewCategorie.class)
 	public Categorie add(@RequestBody Categorie categorie) {
 		categorieRepo.save(categorie);
 		return categorie; 
 	}
 	@PutMapping("/{id}")
 	@ResponseBody
+	@JsonView(Views.ViewCategorie.class)
 	public Categorie edit(@RequestBody Categorie categorie, @PathVariable Long id) {
 		categorieRepo.save(categorie);
 		
@@ -51,6 +69,7 @@ public class CategorieRestController {
 	}
 	
 	@DeleteMapping("/{id}")
+	@JsonView(Views.ViewCategorie.class)
 	public void delete(@PathVariable Long id) {
 		categorieRepo.deleteById(id);
 	}

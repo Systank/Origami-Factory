@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import la.factory.origami.factory.model.Admin;
+import la.factory.origami.factory.model.Views;
 import la.factory.origami.factory.repository.IRepoAdmin;
 
 
@@ -28,12 +29,14 @@ public class AdminRestController {
 	
 	@GetMapping("")
 	@ResponseBody
+	@JsonView(Views.ViewAdmin.class)
 	public List<Admin> list() {
 		return adminRepo.findAll();
 	}
 	
 	@PostMapping("")
 	@ResponseBody
+	@JsonView(Views.ViewAdmin.class)
 	public Admin add(@RequestBody Admin admin) {
 		 adminRepo.save(admin); 
 		 return admin;
@@ -41,12 +44,14 @@ public class AdminRestController {
 
 	@PutMapping("/{id}")
 	@ResponseBody
+	@JsonView(Views.ViewAdmin.class)
 	public Admin edit(@RequestBody Admin admin, @PathVariable Long id) {
 		 adminRepo.save(admin); 
 		 return (Admin) adminRepo.findById(id).get(); 
 	}
 	
 	@DeleteMapping("/{id}")
+	@JsonView(Views.ViewAdmin.class)
 	public void delete(@PathVariable Long id) {
 		adminRepo.deleteById(id);
 	}

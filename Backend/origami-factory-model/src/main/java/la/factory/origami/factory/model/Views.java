@@ -8,8 +8,24 @@ public class Views {
 	public static class ViewEtape extends ViewCommon {
 		
 	}
+		
+	public static class ViewCategorie extends ViewCommon{
+			
+	}
+	public static class ViewCategorieWithOrigamis extends ViewCategorie {
+			
+	}
+	public static class ViewCategorieWithSousCats extends ViewCategorie {
+		
+	}
+	public static class ViewAdmin extends ViewCommon {
+			
+	}
+	
+		
 
 	public static class ViewEtapeDetail extends ViewEtape {
 		
 	}
 }
+
