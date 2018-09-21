@@ -1,23 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CategorieService } from './categorie.service';
-import {Categorie} from './categorie';
+import { OrigamiService } from './origami.service';
+import {Origami} from './origami';
 
 
 @Component({
-  templateUrl: './categorie-detail.component.html',
-  styleUrls: ['./categorie-detail.component.css']
+  templateUrl: './origami-detail.component.html',
+  styleUrls: ['./origami-detail.component.css']
 })
 export class OrigamiDetailComponent implements OnInit {
 
-  private categorie : Categorie= new Categorie();
+  private origami : Origami= new Origami();
 
-  constructor(private route: ActivatedRoute, private categorieService: CategorieService ) {
+  constructor(private route: ActivatedRoute, private origamiService: OrigamiService ) {
     this.route.params.subscribe(params => {
       console.log(params['id']);
-      this.categorieService
+      this.origamiService
         .findById(Number(params['id']), true)
-        .subscribe(resp => this.categorie = resp.json());
+        .subscribe(resp => this.origami = resp.json());
     });
   }
 
