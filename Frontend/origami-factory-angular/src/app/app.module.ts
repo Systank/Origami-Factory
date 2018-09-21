@@ -6,13 +6,15 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { EtapeComponent } from './etape/etape.component';
 import { CategorieComponent } from './categorie/categorie.component';
+import {OrigamiComponent} from './origami/origami.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     EtapeComponent,
-    CategorieComponent
+    CategorieComponent,
+    OrigamiComponent
   ],
   imports: [
     BrowserModule,
