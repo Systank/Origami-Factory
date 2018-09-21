@@ -53,7 +53,14 @@ public class Origami {
 	@JsonView(Views.ViewCommon.class)
 	private String imageOri; 
 	
-	
+	@OneToMany(mappedBy = "origami", fetch=FetchType.EAGER)
+	@JsonView(Views.ViewOrigamiDetail.class)
+	private List<Etape> etapes = new ArrayList<Etape>();
+	@ManyToMany
+	@JoinTable(name = "origami_categorie", joinColumns = @JoinColumn(name = "origami_id"), inverseJoinColumns = @JoinColumn(name = "categorie_id"), uniqueConstraints = @UniqueConstraint(columnNames = {
+			"origami_id", "categorie_id" }))
+	@JsonView(Views.ViewOrigami.class)
+	private List<Categorie> categories = new ArrayList<Categorie>();
 	
 	
 	public Long getId() {
@@ -110,14 +117,7 @@ public class Origami {
 	public void setImageOri(String imageOri) {
 		this.imageOri = imageOri;
 	}
-	@OneToMany(mappedBy = "origami", fetch=FetchType.EAGER)
-	@JsonView(Views.ViewOrigami.class)
-	private List<Etape> etapes = new ArrayList<Etape>();
-	@ManyToMany
-	@JoinTable(name = "origami_categorie", joinColumns = @JoinColumn(name = "origami_id"), inverseJoinColumns = @JoinColumn(name = "categorie_id"), uniqueConstraints = @UniqueConstraint(columnNames = {
-			"origami_id", "categorie_id" }))
-	@JsonView(Views.ViewOrigami.class)
-	private List<Categorie> categories = new ArrayList<Categorie>();
+	
 	public List<Etape> getEtapes() {
 		return etapes;
 	}

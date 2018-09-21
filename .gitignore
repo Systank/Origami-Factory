@@ -8,3 +8,5 @@ Backend/origami-factory-model/\.settings/
 Backend/origami-factory-model/target/
 
 Frontend/\.idea/
+
+\.project
