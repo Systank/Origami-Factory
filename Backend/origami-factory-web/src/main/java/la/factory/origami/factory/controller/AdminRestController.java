@@ -1,6 +1,7 @@
 package la.factory.origami.factory.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import la.factory.origami.factory.model.Admin;
+import la.factory.origami.factory.model.Categorie;
 import la.factory.origami.factory.model.Views;
 import la.factory.origami.factory.repository.IRepoAdmin;
 
@@ -33,7 +35,12 @@ public class AdminRestController {
 	public List<Admin> list() {
 		return adminRepo.findAll();
 	}
-	
+	@GetMapping("/{id}")
+	@ResponseBody
+	@JsonView(Views.ViewAdmin.class)
+	public Admin detail(@PathVariable Long id) {
+		return adminRepo.findByIdd(id);
+	}
 	@PostMapping("")
 	@ResponseBody
 	@JsonView(Views.ViewAdmin.class)

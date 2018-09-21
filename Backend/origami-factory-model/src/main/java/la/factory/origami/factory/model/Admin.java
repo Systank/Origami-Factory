@@ -7,17 +7,22 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name="admin")
 public class Admin {
 	@Id
 	@GeneratedValue
+	@JsonView(Views.ViewCommon.class)
 	private Long id; 
 	@Column(name="username")
 	@NotEmpty(message = "Le nom username est obligatoire")
+	@JsonView(Views.ViewCommon.class)
 	private String username; 
 	@Column(name="password")
 	@NotEmpty(message = "Le mot de passe est obligatoire")
+	@JsonView(Views.ViewCommon.class)
 	private String password;
 	
 	
