@@ -7,21 +7,27 @@ import { AppComponent } from './app.component';
 import { EtapeComponent } from './etape/etape.component';
 import { CategorieComponent } from './categorie/categorie.component';
 import {OrigamiComponent} from './origami/origami.component';
+import {RouterModule, Routes} from '@angular/router';
+import {AppConfigService} from "./app-config.service";
 
+const routes: Routes = [
 
+];
 @NgModule({
   declarations: [
-    AppComponent,
-    EtapeComponent,
-    CategorieComponent,
-    OrigamiComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    RouterModule,
+    RouterModule.forRoot(routes),
+    EtapeComponent,
+    CategorieComponent,
+    OrigamiComponent
   ],
-  providers: [],
+  providers: [AppConfigService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
