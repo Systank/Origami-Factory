@@ -28,18 +28,20 @@ public class OrigamiRestController {
 	
 	@GetMapping("")
 	@ResponseBody
-	@JsonView(Views.ViewCommon.class)
+	@JsonView(Views.ViewOrigami.class)
 	public List<Origami> list(){
 		return origamiRepo.findAll();
 	}
 	
-	@GetMapping("/origami/{id}")
+	@GetMapping("/{id}")
 	@ResponseBody
-	public List<Origami> group(){
-		return origamiRepo.findOrigamiWithEtapesWithCategories();
+	@JsonView(Views.ViewOrigamiDetail.class)
+	public Origami group(@PathVariable Long id){
+		return origamiRepo.findOrigamiWithEtapes(id);
 	}
 	@PostMapping("")
 	@ResponseBody
+	@JsonView(Views.ViewOrigami.class)
 	public Origami add(@RequestBody Origami origami) {
 		origamiRepo.save(origami);
 		
@@ -48,6 +50,7 @@ public class OrigamiRestController {
 	
 	@PutMapping("/{id}")
 	@ResponseBody
+	@JsonView(Views.ViewOrigami.class)
 	public Origami edit(@RequestBody Origami origami, @PathVariable Long id) {
 		origamiRepo.save(origami);
 
@@ -55,6 +58,7 @@ public class OrigamiRestController {
 	}
 	
 	@DeleteMapping("/{id}")
+	@JsonView(Views.ViewOrigami.class)
 	public void  delete(@PathVariable Long id) {
 		origamiRepo.deleteById(id);
 	}
