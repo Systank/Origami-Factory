@@ -10,3 +10,5 @@ Backend/origami-factory-model/target/
 Frontend/\.idea/
 
 \.project
+
+Frontend/origami-factory-angular/package-lock\.json
