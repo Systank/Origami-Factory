@@ -10,7 +10,7 @@ export class OrigamiService {
   apiUrl = '';
 
   constructor(private http: Http, private appConfig: AppConfigService) {
-    this.apiUrl = appConfig.apiUrl + '/origami/';
+    this.apiUrl = appConfig.apiUrl + 'origami/';
 
     this.http
       .get(this.apiUrl)
