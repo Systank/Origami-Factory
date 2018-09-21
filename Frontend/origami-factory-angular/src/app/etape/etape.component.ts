@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Etape} from './etape';
+import {EtapeService} from "./etape.service";
 
 @Component({
   selector: 'app-etape',
@@ -7,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EtapeComponent implements OnInit {
 
-  constructor() { }
+  private FormEtape: Etape = null;
+
+  constructor(private etapeService: EtapeService) { }
 
   ngOnInit() {
   }
