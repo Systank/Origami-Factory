@@ -11,7 +11,7 @@ import { CategorieComponent } from './categorie/categorie.component';
 @NgModule({
   declarations: [
     AppComponent,
-    EtapeComponent
+    EtapeComponent,
     CategorieComponent
   ],
   imports: [

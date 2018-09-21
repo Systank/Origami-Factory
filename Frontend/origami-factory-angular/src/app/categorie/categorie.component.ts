@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';import {MatiereService} from './categorie.service';
+import {Component, OnInit} from '@angular/core';import {CategorieService} from './categorie.service';
 import {Categorie} from './categorie';
 
 @Component({
@@ -8,7 +8,7 @@ import {Categorie} from './categorie';
 })
 export class CategorieComponent implements OnInit {
 
-  private formCategorie: Matiere = null;
+  private formCategorie: Categorie = null;
 
   constructor(private categorieService: CategorieService) {
   }
@@ -21,7 +21,7 @@ export class CategorieComponent implements OnInit {
   }
 
   public add() {
-    this.formCategorie = new Matiere();
+    this.formCategorie = new Categorie();
   }
 
   public edit(id: number) {
