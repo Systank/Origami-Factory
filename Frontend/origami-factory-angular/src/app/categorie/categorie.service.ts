@@ -10,7 +10,7 @@ export class CategorieService {
   apiUrl = '';
 
   constructor(private http: Http, private appConfig: AppConfigService) {
-    this.apiUrl = appConfig.apiUrl + '/categorie/';
+    this.apiUrl = appConfig.apiUrl + 'categorie/';
 
     this.http
       .get(this.apiUrl)
