@@ -1,3 +1,50 @@
-<p>
-  etape works!
-</p>
+<div class="container">
+
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Identifiant</th>
+      <th>Numéro d'étape</th>
+      <th>Description</th>
+      <th></th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let etape of list()" >
+      <td>{{etape.id}}</td>
+      <td>{{etape.numeroEtape}}</td>
+      <td>{{etape.description}}</td>
+      <td><a class="btn btn-info" (click)="edit(etape.id)">Editer</a></td>
+      <td><a class="btn btn-danger" (click)="delete(etape.id)">Supprimer</a></td>
+    </tr>
+    <tr>
+      <td colspan="8"><a class="btn btn-success" (click)="add()">Ajouter</a></td>
+    </tr>
+    </tbody>
+  </table>
+  <table class="table table-stripped">
+    <thead>
+    <tr>
+      <th>Identifiant</th>
+      <th>Numéro d'étape</th>
+      <th>Description</th>
+      <th>Visuel de l'étape</th>
+      <th></th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="formEtape">
+        <td>{{formEtape.id}}</td>
+        <td><input type="text" [(ngModel)]="formEtape.numeroEtape"/></td>
+        <td><input type="text" [(ngModel)]="formEtape.description"/></td>
+        <td><input type="text" [(ngModel)]="formEtape.imageEtape"/></td>
+        <td><a class="btn btn-info" (click)="save()">Valider</a></td>
+        <td><a class="btn btn-warning" (click)="cancel()">Annuler</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+

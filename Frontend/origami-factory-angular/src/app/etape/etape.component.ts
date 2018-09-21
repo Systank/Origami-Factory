@@ -16,11 +16,11 @@ export class EtapeComponent implements OnInit {
   ngOnInit() {
   }
 
-  public list(){
+  public list() {
     return this.etapeService.findAll();
   }
 
-  public add(){
+  public add() {
     this.formEtape = new Etape();
   }
 
