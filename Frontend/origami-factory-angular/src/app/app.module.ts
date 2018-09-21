@@ -4,10 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { EtapeComponent } from './etape/etape.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    EtapeComponent
   ],
   imports: [
     BrowserModule,

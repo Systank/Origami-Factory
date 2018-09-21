@@ -13,7 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import la.factory.origami.factory.model.Etape;
+import la.factory.origami.factory.model.Views;
 import la.factory.origami.factory.repository.IRepoEtape;
 
 @RestController
@@ -25,17 +28,20 @@ public class EtapeRestController {
 	
 	@GetMapping("")
 	@ResponseBody
+	@JsonView(Views.ViewEtape.class)
 	public List<Etape> list(){
 		return etapeRepo.findAll();
 	}
 	
 	@GetMapping("/origami/{id}")
 	@ResponseBody
-	public List<Etape> group(){
-		return etapeRepo.findEtapeByOrigami();
+	@JsonView(Views.ViewEtapeDetail.class)
+	public List<Etape> group(@PathVariable Long id){
+		return etapeRepo.findEtapeByOrigami(id);
 	}
 	@PostMapping("")
 	@ResponseBody
+	@JsonView(Views.ViewEtape.class)
 	public Etape add(@RequestBody Etape etape) {
 		etapeRepo.save(etape);
 		
@@ -44,6 +50,7 @@ public class EtapeRestController {
 	
 	@PutMapping("/{id}")
 	@ResponseBody
+	@JsonView(Views.ViewEtape.class)
 	public Etape edit(@RequestBody Etape etape, @PathVariable Long id) {
 		etapeRepo.save(etape);
 
@@ -51,6 +58,7 @@ public class EtapeRestController {
 	}
 	
 	@DeleteMapping("/{id}")
+	@JsonView(Views.ViewEtape.class)
 	public void  delete(@PathVariable Long id) {
 		etapeRepo.deleteById(id);
 	}
