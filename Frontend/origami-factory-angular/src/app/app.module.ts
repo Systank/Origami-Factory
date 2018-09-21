@@ -6,7 +6,7 @@ import {HttpModule} from '@angular/http';
 import {AppComponent} from './app.component';
 import {EtapeComponent} from './etape/etape.component';
 import {CategorieComponent} from './categorie/categorie.component';
-import {OrigamiComponent} from './origami/origami.component';
+import {OrigamiModule} from './origami/origami.module';
 import {RouterModule, Routes} from '@angular/router';
 import {AppConfigService} from './app-config.service';
 import {CategorieModule} from './categorie/categorie.module';
@@ -25,7 +25,7 @@ const routes: Routes = [];
     RouterModule.forRoot(routes),
     // EtapeComponent,
     CategorieModule,
-    // OrigamiModule
+    OrigamiModule
   ],
   providers: [AppConfigService],
   bootstrap: [AppComponent]

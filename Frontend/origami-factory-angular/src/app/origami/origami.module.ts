@@ -29,4 +29,4 @@ const routes: Routes = [
   ],
   providers: [OrigamiService]
 })
-export class MessageModule { }
+export class OrigamiModule { }
