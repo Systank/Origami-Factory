@@ -1,6 +1,7 @@
 import {Etape} from "../etape/etape";
 import {Categorie} from "../categorie/categorie";
 
+
 export class Origami {
   public id: number;
   public nom: string;
