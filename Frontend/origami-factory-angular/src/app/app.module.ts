@@ -5,11 +5,14 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { EtapeComponent } from './etape/etape.component';
+import { CategorieComponent } from './categorie/categorie.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     EtapeComponent
+    CategorieComponent
   ],
   imports: [
     BrowserModule,

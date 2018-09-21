@@ -1,0 +1,30 @@
+<div class="container">
+
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Identifiant</th>
+      <th>Nom</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let categorie of list()">
+      <td [routerLink]="['/categorie/'+categorie.id]">{{categorie.id}}</td>
+      <td>{{matiere.nom}}</td>
+      <td><a class="btn btn-info" (click)="edit(categorie.id)">Editer</a></td>
+      <td><a class="btn btn-danger" (click)="delete(categorie.id)">Supprimer</a></td>
+    </tr>
+    <tr>
+      <td colspan="6"><a class="btn btn-success" (click)="add()">Ajouter</a></td>
+    </tr>
+    <tr *ngIf="formCategorie">
+      <td>{{formCategorie.id}}</td>
+      <td><input type="text" [(ngModel)]="formCategorie.nom"/></td>
+      <td><a class="btn btn-info" (click)="save()">Valider</a></td>
+      <td><a class="btn btn-warning">Annuler</a></td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>
+
