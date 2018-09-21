@@ -1,24 +1,25 @@
 import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
-import {Categorie} from './categorie';
+
 import {AppConfigService} from '../app-config.service';
+import {Admin} from "./admin";
 
 
 @Injectable()
 export class AdminService {
-  categories: Array<Categorie> = new Array<Categorie>();
+  admins: Array<Admin> = new Array<Admin>();
   apiUrl = '';
 
   constructor(private http: Http, private appConfig: AppConfigService) {
-    this.apiUrl = appConfig.apiUrl + 'categorie/';
+    this.apiUrl = appConfig.apiUrl + 'admin/';
 
     this.http
       .get(this.apiUrl)
-      .subscribe(resp => this.categories = resp.json());
+      .subscribe(resp => this.admins = resp.json());
   }
 
   public findAll() {
-    return this.categories;
+    return this.admins;
   }
 
   public findById(id: number, http?: boolean): any {
@@ -27,37 +28,37 @@ export class AdminService {
         .get(this.apiUrl + id);
     }
 
-    for (const categorie of this.categories) {
-      if (categorie.id === id) {
-        return categorie;
+    for (const admin of this.admins) {
+      if (admin.id === id) {
+        return admin;
       }
     }
 
     return null;
   }
 
-  public save(categorie: Categorie) {
-    if (categorie) {
-      if (!categorie.id) {
+  public save(admin: Admin) {
+    if (admin) {
+      if (!admin.id) {
 
-        if (this.categories.length > 0) {
-          categorie.id = this.categories[this.categories.length - 1].id + 1;
+        if (this.admins.length > 0) {
+          admin.id = this.admins[this.admins.length - 1].id + 1;
         } else {
-          categorie.id = 1;
+          admin.id = 1;
         }
 
 
         this.http
-          .post(this.apiUrl, categorie)
+          .post(this.apiUrl, admin)
           .subscribe(
-            resp => this.categories.push(categorie),
+            resp => this.admins.push(admin),
             err => console.log(err)
           );
 
 
       } else {
         this.http
-          .put(this.apiUrl + categorie.id, categorie)
+          .put(this.apiUrl + admin.id, admin)
           .subscribe(
             resp => null,
             err => console.log(err)
@@ -66,13 +67,13 @@ export class AdminService {
     }
   }
 
-  public delete(categorie: Categorie) {
-    const pos: number = this.categories.indexOf(categorie);
+  public delete(admin: Admin) {
+    const pos: number = this.admins.indexOf(admin);
 
     this.http
-      .delete(this.apiUrl + categorie.id)
+      .delete(this.apiUrl + admin.id)
       .subscribe(
-        resp => this.categories.splice(pos, 1),
+        resp => this.admins.splice(pos, 1),
         err => console.log(err)
       );
   }
