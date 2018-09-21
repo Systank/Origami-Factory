@@ -1,1 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+#background{
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0px;
+  left: 0px;
+  opacity: 0.5;
+  background-image: url("http://s1.1zoom.net/big0/2/Foxes_Origami_458678.jpg");
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+}
+
+.table-striped tbody tr {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(242, 242, 242, 0.5);
+}
+.table thead th{
+  border-top: none;
+}
+
+.center-text{
+  text-align: center;
+}

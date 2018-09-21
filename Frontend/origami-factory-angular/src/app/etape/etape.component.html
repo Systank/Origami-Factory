@@ -1,5 +1,7 @@
-<div class="container">
+<div id="background"></div>
 
+<div class="container">
+<div>
   <table class="table table-striped">
     <thead>
     <tr>
@@ -23,7 +25,7 @@
     </tr>
     </tbody>
   </table>
-  <table class="table table-stripped">
+  <table class="table table-striped" *ngIf="formEtape">
     <thead>
     <tr>
       <th>Identifiant</th>
@@ -35,8 +37,9 @@
     </tr>
     </thead>
     <tbody>
-      <tr *ngIf="formEtape">
-        <td>{{formEtape.id}}</td>
+      <tr >
+        <td *ngIf="formEtape.id">{{formEtape.id}}</td>
+        <td *ngIf="!formEtape.id">-------------</td>
         <td><input type="text" [(ngModel)]="formEtape.numeroEtape"/></td>
         <td><input type="text" [(ngModel)]="formEtape.description"/></td>
         <td><input type="text" [(ngModel)]="formEtape.imageEtape"/></td>
@@ -45,6 +48,6 @@
       </tr>
     </tbody>
   </table>
-
+</div>
 </div>
 

@@ -12,7 +12,9 @@ import {EtapeModule} from "./etape/etape.module";
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomepageComponent } from './homepage/homepage.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {path: 'accueil', component: HomepageComponent}
+];
 
 @NgModule({
   declarations: [
