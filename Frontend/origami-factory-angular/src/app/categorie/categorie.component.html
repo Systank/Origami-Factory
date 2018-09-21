@@ -21,7 +21,7 @@
       <td>{{formCategorie.id}}</td>
       <td><input type="text" [(ngModel)]="formCategorie.nom"/></td>
       <td><a class="btn btn-info" (click)="save()">Valider</a></td>
-      <td><a class="btn btn-warning">Annuler</a></td>
+      <td><a class="btn btn-warning" (click)="cancel()">Annuler</a></td>
     </tr>
     </tbody>
   </table>

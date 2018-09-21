@@ -4,10 +4,13 @@ import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 
 import {AppComponent} from './app.component';
+import {EtapeComponent} from './etape/etape.component';
+
 import {OrigamiModule} from './origami/origami.module';
 import {RouterModule, Routes} from '@angular/router';
 import {AppConfigService} from './app-config.service';
 import {CategorieModule} from './categorie/categorie.module';
+import {AdminModule} from './admin/admin.module';
 import {EtapeModule} from "./etape/etape.module";
 
 const routes: Routes = [];
@@ -24,7 +27,8 @@ const routes: Routes = [];
     RouterModule.forRoot(routes),
     EtapeModule,
     CategorieModule,
-    OrigamiModule
+    OrigamiModule,
+    AdminModule
   ],
   providers: [AppConfigService],
   bootstrap: [AppComponent]

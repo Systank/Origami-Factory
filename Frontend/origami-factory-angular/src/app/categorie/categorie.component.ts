@@ -37,4 +37,7 @@ export class CategorieComponent implements OnInit {
   public delete(id: number) {
     this.categorieService.delete(this.categorieService.findById(id));
   }
+  public cancel() {
+    this.formCategorie = null;
+  }
 }

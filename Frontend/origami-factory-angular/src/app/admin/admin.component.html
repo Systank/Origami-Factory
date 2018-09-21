@@ -4,31 +4,29 @@
     <thead>
     <tr>
       <th>Identifiant</th>
-      <th>Version</th>
-      <th>Nom</th>
-      <th>Difficulté</th>
-      <th></th>
-      <th></th>
+      <th>Username</th>
+      <th>Password</th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let matiere of list()">
-      <td [routerLink]="['/matiere/'+matiere.id]">{{matiere.id}}</td>
-      <td>{{matiere.version}}</td>
-      <td>{{matiere.nom}}</td>
-      <td>{{matiere.difficulte}}</td>
-      <td><a class="btn btn-info" (click)="edit(matiere.id)">Editer</a></td>
-      <td><a class="btn btn-danger" (click)="delete(matiere.id)">Supprimer</a></td>
+    <tr *ngFor="let admin of list()">
+      <td [routerLink]="['/admin/'+admin.id]">{{admin.id}}</td>
+
+      <td>{{admin.username}}</td>
+      <td>{{admin.username}}</td>
+      <td><a class="btn btn-info" (click)="edit(admin.id)">Editer</a></td>
+      <td><a class="btn btn-danger" (click)="delete(admin.id)">Supprimer</a></td>
     </tr>
     <tr>
       <td colspan="6"><a class="btn btn-success" (click)="add()">Ajouter</a></td>
     </tr>
-    <tr *ngIf="formMatiere">
-      <td>{{formMatiere.id}}</td>
-      <td>{{formMatiere.version}}</td>
-      <td><input type="text" [(ngModel)]="formMatiere.nom"/></td>
-      <td><input type="text" [(ngModel)]="formMatiere.difficulte"/></td>
+    <tr *ngIf="formAdmin">
+      <td>{{formAdmin.id}}</td>
+      <td>{{formAdmin.version}}</td>
+      <td><input type="text" [(ngModel)]="formAdmin.username"/></td>
+      <td><input type="text" [(ngModel)]="formAdmin.password"/></td>
       <td><a class="btn btn-info" (click)="save()">Valider</a></td>
+      <td><a class="btn btn-info" (click)="cancel()">Annuler</a></td>
       <td><a class="btn btn-warning">Annuler</a></td>
     </tr>
     </tbody>

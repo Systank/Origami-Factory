@@ -1,0 +1,26 @@
+<div class="container">
+
+  <p>
+    {{admin.id}}<br/>
+    {{admin.username}}<br/>
+    {{admin.password}}<br/>
+
+  </p>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Username</th>
+      <th>Password</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngIf="eleve.formateur">
+
+      <td>{{eleve.formateur.nom}}</td>
+      <td>{{eleve.formateur.prenom}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
