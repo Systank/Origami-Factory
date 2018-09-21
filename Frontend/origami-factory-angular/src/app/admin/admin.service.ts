@@ -4,7 +4,6 @@ import {Http} from '@angular/http';
 import {AppConfigService} from '../app-config.service';
 import {Admin} from "./admin";
 
-
 @Injectable()
 export class AdminService {
   admins: Array<Admin> = new Array<Admin>();
