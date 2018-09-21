@@ -7,12 +7,14 @@ import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {CategorieService} from './categorie.service';
 import {CategorieDetailComponent} from './categorie-detail.component';
+import {CategorieFilleComponent} from './categorie-fille.component';
 
 
 
 const routes: Routes = [
   {path: 'categorie', component: CategorieComponent},
   {path: 'categorie/:id', component: CategorieDetailComponent},
+  {path: 'categorie/fille/:id', component: CategorieFilleComponent},
 ];
 
 @NgModule({
@@ -30,7 +32,9 @@ const routes: Routes = [
   declarations: [
 
     CategorieComponent,
-    CategorieDetailComponent
+    CategorieDetailComponent,
+    CategorieFilleComponent
+
 
   ],
   exports: [ ],
