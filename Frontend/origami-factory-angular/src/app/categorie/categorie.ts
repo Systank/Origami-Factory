@@ -3,7 +3,6 @@ export class Categorie {
   public nom: string;
   origami: any = ''
 
-
   constructor(id?: number, nom?: string) {
     this.id = id;
     this.nom = nom;

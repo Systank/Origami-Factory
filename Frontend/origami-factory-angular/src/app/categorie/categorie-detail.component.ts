@@ -4,6 +4,7 @@ import { CategorieService } from './categorie.service';
 import {Categorie} from './categorie';
 
 
+
 @Component({
   templateUrl: './categorie-detail.component.html',
   styleUrls: ['./categorie-detail.component.css']

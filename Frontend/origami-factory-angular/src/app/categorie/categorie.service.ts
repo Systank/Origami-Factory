@@ -3,7 +3,6 @@ import {Http} from '@angular/http';
 import {Categorie} from './categorie';
 import {AppConfigService} from '../app-config.service';
 
-
 @Injectable()
 export class CategorieService {
   categories: Array<Categorie> = new Array<Categorie>();

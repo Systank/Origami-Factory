@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {CategorieService} from './categorie.service';
 import {Categorie} from './categorie';
 
+
 @Component({
   selector: 'app-categorie',
   templateUrl: './categorie.component.html',
