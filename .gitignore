@@ -10,3 +10,7 @@ Backend/origamifactory-model/\.project
 Backend/origami-factory-model/target/
 
 \.project
+
+Frontend/\.idea/workspace\.xml
+
+Frontend/\.idea/
