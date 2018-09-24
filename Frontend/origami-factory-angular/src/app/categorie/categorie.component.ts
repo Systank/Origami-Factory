@@ -23,7 +23,7 @@ export class CategorieComponent implements OnInit {
   }
 
   public add() {
-    this.formCategorie = new Categorie();
+    this.formCategorie = new Categorie(true);
   }
 
   public edit(id: number) {

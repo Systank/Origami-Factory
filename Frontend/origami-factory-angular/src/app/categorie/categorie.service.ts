@@ -39,17 +39,10 @@ export class CategorieService {
     if (categorie) {
       if (!categorie.id) {
 
-        if (this.categories.length > 0) {
-          categorie.id = this.categories[this.categories.length - 1].id + 1;
-        } else {
-          categorie.id = 1;
-        }
-
-
         this.http
           .post(this.apiUrl, categorie)
           .subscribe(
-            resp => this.categories.push(categorie),
+            resp => this.categories.push(resp.json()),
             err => console.log(err)
           );
 

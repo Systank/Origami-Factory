@@ -11,7 +11,7 @@ import {Categorie} from './categorie';
 })
 export class CategorieDetailComponent implements OnInit {
 
-  private categorie : Categorie= new Categorie();
+  private categorie: Categorie = new Categorie();
 
   constructor(private route: ActivatedRoute, private categorieService: CategorieService ) {
     this.route.params.subscribe(params => {

@@ -6,14 +6,14 @@
     <tr>
       <th>Identifiant</th>
       <th>Nom</th>
-      <th>Identifient Catégorie Mère</th>
+      <th>Nom de la Catégorie Mère</th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let categorie of list()">
       <td [routerLink]="['/categorie/'+categorie.id]">{{categorie.id}}</td>
       <td>{{categorie.nom}}</td>
-      <td><p *ngIf="categorie.superCat">{{categorie.superCat.id}}</td>
+      <td><p *ngIf="categorie.superCat">{{categorie.superCat.nom}}</td>
       <td><a class="btn btn-info" (click)="edit(categorie.id)">Editer</a></td>
       <td><a class="btn btn-danger" (click)="delete(categorie.id)">Supprimer</a></td>
     </tr>
@@ -23,7 +23,13 @@
     <tr *ngIf="formCategorie">
       <td>{{formCategorie.id}}</td>
       <td><input type="text" [(ngModel)]="formCategorie.nom"/></td>
-      <td></td>
+      <td>
+        <select class="form-control"  id="power"
+                required name="power" [(ngModel)]="formCategorie.superCat.id">
+
+          <option *ngFor="let cat of list()" [value]="cat.id">{{cat.nom}}</option>
+      </select>
+      </td>
       <td><a class="btn btn-info" (click)="save()">Valider</a></td>
       <td><a class="btn btn-warning" (click)="cancel()">Annuler</a></td>
     </tr>

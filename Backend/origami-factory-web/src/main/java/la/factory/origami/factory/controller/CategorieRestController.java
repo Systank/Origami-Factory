@@ -66,7 +66,7 @@ public class CategorieRestController {
 
 	@PostMapping("")
 	@ResponseBody
-	@JsonView(Views.ViewCategorie.class)
+	@JsonView(Views.ViewCategorieWithSousCats.class)
 	public Categorie add(@RequestBody Categorie categorie) {
 		categorieRepo.save(categorie);
 		return categorie; 

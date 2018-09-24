@@ -13,11 +13,11 @@ import {ActivatedRoute} from "@angular/router";
 export class CategorieFilleComponent implements OnInit {
 
   private formCategorie: Categorie = null;
-  private idMere : number;
+  private idMere: number = 0;
   private categoriesFilles: Array<Categorie> = null;
-  constructor(private categorieService: CategorieService,private route: ActivatedRoute) {
+  constructor(private categorieService: CategorieService, private route: ActivatedRoute) {
     this.route.params.subscribe(params => {
-      this.idMere = params['id']
+      this.idMere = params['id'];
     });
   }
 
@@ -25,14 +25,14 @@ export class CategorieFilleComponent implements OnInit {
   }
 
   public list() {
-    this.categorieService.findAll().forEach(function (c : Categorie){
-      if (c.superCat) {
-        if (c.superCat.id === this.idMere) {
-          this.categoriesFilles.push(c)
+
+    for (const cat of this.categorieService.findAll()) {
+      if (cat.superCat) {
+        if (cat.superCat.id === this.idMere) {
+          this.categoriesFilles.push(cat);
         }
       }
-      }
-    )
+    }
     return this.categoriesFilles;
   }
 
