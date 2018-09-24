@@ -1,24 +1,28 @@
 <div class="container">
+  <p>
+    {{categorie.id}}<br/>
+    {{categorie.nom}}<br/>
 
+  </p>
 
-<p>
-{{categorie.id}}<br/>
-{{categorie.nom}}<br/>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Nom</th>
 
-</p>
-<table class="table table-striped">
-  <thead>
-  <tr>
-    <th>Nom</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngIf="eleve.formateur">
-
-    <td>{{eleve.formateur.nom}}</td>
-    <td>{{eleve.formateur.prenom}}</td>
-  </tr>
-  </tbody>
-</table>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let origami of categories.origamis">
+      <td>{{origami.nom}}</td>
+      <td>{{origami.tempsRea}}</td>
+      <td>{{origami.nbFeuille}}</td>
+      <td>{{origami.niveau}}</td>
+      <td>{{origami.note}}</td>
+      <td>{{origami.actif}}</td>
+      <td>{{origami.youtube}}</td>
+      <td>{{origami.imageOri}}</td>
+    </tr>
+    </tbody>
+  </table>
 </div>
-

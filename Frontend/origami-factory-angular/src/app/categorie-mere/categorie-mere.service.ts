@@ -4,12 +4,12 @@ import {Categorie} from './categorie';
 import {AppConfigService} from '../app-config.service';
 
 @Injectable()
-export class CategorieService {
+export class CategorieMereService {
   categories: Array<Categorie> = new Array<Categorie>();
   apiUrl = '';
 
   constructor(private http: Http, private appConfig: AppConfigService) {
-    this.apiUrl = appConfig.apiUrl + 'categorie/';
+    this.apiUrl = appConfig.apiUrl + 'categorie/mere/';
 
     this.http
       .get(this.apiUrl)
@@ -39,10 +39,17 @@ export class CategorieService {
     if (categorie) {
       if (!categorie.id) {
 
+        if (this.categories.length > 0) {
+          categorie.id = this.categories[this.categories.length - 1].id + 1;
+        } else {
+          categorie.id = 1;
+        }
+
+
         this.http
           .post(this.apiUrl, categorie)
           .subscribe(
-            resp => this.categories.push(resp.json()),
+            resp => this.categories.push(categorie),
             err => console.log(err)
           );
 

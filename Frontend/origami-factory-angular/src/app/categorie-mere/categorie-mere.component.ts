@@ -1,18 +1,18 @@
 import {Component, OnInit} from '@angular/core';
-import {CategorieService} from './categorie.service';
+import {CategorieMereService} from './categorie-mere.service';
 import {Categorie} from './categorie';
 
 
 @Component({
   selector: 'app-categorie',
-  templateUrl: './categorie.component.html',
-  styleUrls: ['./categorie.component.css']
+  templateUrl: './categorie-mere.component.html',
+  styleUrls: ['./categorie-mere.component.css']
 })
-export class CategorieComponent implements OnInit {
+export class CategorieMereComponent implements OnInit {
 
   private formCategorie: Categorie = null;
 
-  constructor(private categorieService: CategorieService) {
+  constructor(private categorieService: CategorieMereService) {
   }
 
   ngOnInit() {
@@ -23,7 +23,7 @@ export class CategorieComponent implements OnInit {
   }
 
   public add() {
-    this.formCategorie = new Categorie(true);
+    this.formCategorie = new Categorie();
   }
 
   public edit(id: number) {

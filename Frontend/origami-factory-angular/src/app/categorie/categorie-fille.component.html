@@ -1,0 +1,31 @@
+<div class="container">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Identifiant</th>
+      <th>Nom</th>
+      <th>Identifiant Catégorie Mère</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let categorie of list()">
+      <td [routerLink]="['/categorie-fille/'+categorie.id]">{{categorie.id}}</td>
+      <td>{{categorie.nom}}</td>
+      <td><p *ngIf="categorie.superCat">{{categorie.superCat.id}}</td>
+      <td><a class="btn btn-info" (click)="edit(categorie.id)">Editer</a></td>
+      <td><a class="btn btn-danger" (click)="delete(categorie.id)">Supprimer</a></td>
+    </tr>
+    <tr>
+      <td colspan="6"><a class="btn btn-success" (click)="add()">Ajouter</a></td>
+    </tr>
+    <tr *ngIf="formCategorie">
+      <td>{{formCategorie.id}}</td>
+      <td><input type="text" [(ngModel)]="formCategorie.nom"/></td>
+      <td></td>
+      <td><a class="btn btn-info" (click)="save()">Valider</a></td>
+      <td><a class="btn btn-warning" (click)="cancel()">Annuler</a></td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>

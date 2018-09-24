@@ -50,11 +50,23 @@ public class CategorieRestController {
 	@JsonView(Views.ViewCategorieWithSousCats.class)
 	public Categorie detail1(@PathVariable Long id) {
 		return categorieRepo.findByIdWithCategories(id);
-	}
-	
-	@PostMapping("")
+		}
+	@GetMapping("/mere")
 	@ResponseBody
 	@JsonView(Views.ViewCategorie.class)
+	public List<Categorie> detail() {
+		return categorieRepo.findMere();
+	}
+	@GetMapping("/mere/{id}")
+	@ResponseBody
+	@JsonView(Views.ViewCategorieWithOrigamis.class)
+	public List<Categorie> detail2(@PathVariable Long id) {
+		return categorieRepo.findByMereWithId(id);
+	}
+
+	@PostMapping("")
+	@ResponseBody
+	@JsonView(Views.ViewCategorieWithSousCats.class)
 	public Categorie add(@RequestBody Categorie categorie) {
 		categorieRepo.save(categorie);
 		return categorie; 
