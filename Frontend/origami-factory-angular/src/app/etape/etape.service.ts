@@ -2,12 +2,16 @@ import { Injectable } from '@angular/core';
 import {Etape} from "./etape";
 import {Http} from "@angular/http";
 import {AppConfigService} from "../app-config.service";
+import {Origami} from "../origami/origami";
 
 @Injectable()
 export class EtapeService {
   apiUrl: string;
   etapes: Array<Etape> = new Array<Etape>();
   etapesOfOrgiami: Array<Etape> = new Array<Etape>();
+  origamiOfEtape: Array<Origami> = new Array<Origami>();
+  filtre: number;
+
 
   constructor(private http: Http, private appConfig: AppConfigService) {
     this.apiUrl = appConfig.apiUrl + 'etape/';
@@ -16,11 +20,27 @@ export class EtapeService {
       .get(this.apiUrl)
       .subscribe(resp => this.etapes = resp.json(),
         err => console.log(err));
+    this.http
+      .get(this.appConfig.apiUrl + 'origami/')
+      .subscribe(resp => this.origamiOfEtape = resp.json(),
+        err => console.log(err));
   }
 
-  public findAll() {
-    return this.etapes;
+  public findAll(filtre?: number) {
+    if (!filtre) {
+      return this.etapes;
+  } else {
+      this.findByOrigami(filtre);
+      return this.etapes;
+    }
   }
+
+  public findAllOri() {
+    return this.origamiOfEtape;
+  }
+
+
+
   public findById (id: number) {
     for (const etape of this.etapes) {
       if (etape.id === id) {

@@ -4,9 +4,30 @@
   height: 100vh;
   top: 0px;
   left: 0px;
-  opacity: 0.8;
+  opacity: 0.6;
   background-image: url("http://s1.1zoom.net/big0/2/Foxes_Origami_458678.jpg");
   background-size: cover;
   background-position: center;
   z-index: -1;
 }
+
+.message-accueil{
+  display: inline-block;
+  width: 100vw;
+  height: calc(100vh - 66px);
+  line-height: calc(100vh - 125px);
+  top: 66px;
+  left: 0px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.span-accueil {
+  width: 100vw;
+  height: 100vh;
+  vertical-align: middle;
+  font-family: 'Nanum Brush Script', cursive;
+  font-size: 100px;
+}
+
+

@@ -13,7 +13,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let etape of list()" >
+    <tr *ngFor="let etape of list(filtre)" >
       <td>{{etape.id}}</td>
       <td>{{etape.numeroEtape}}</td>
       <td>{{etape.description}}</td>
@@ -48,6 +48,13 @@
       </tr>
     </tbody>
   </table>
+  <!--<select [(ngModel)]="valeur">-->
+    <!--<option></option>-->
+    <!--<option *ngFor="let ori of listOri()" value={{ori.id}}>{{ori.nom}}</option>-->
+  <!--</select>-->
+  <!--<a class="btn btn-primary" (click)="filtreur()">Filtrer</a>-->
+
+
 </div>
 </div>
 
