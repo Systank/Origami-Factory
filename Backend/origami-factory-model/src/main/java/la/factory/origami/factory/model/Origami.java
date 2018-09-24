@@ -19,6 +19,7 @@ import javax.persistence.UniqueConstraint;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+
 @Entity
 @Table(name = "origami")
 public class Origami {

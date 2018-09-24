@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {OrigamiService} from "./origami.service";
 import {Origami} from "./origami";
+import {Categorie} from "./categorie";
 
 @Component({
   selector: 'app-origami',
@@ -11,6 +12,8 @@ export class OrigamiComponent implements OnInit {
 
   private formOrigami: Origami = null;
 
+  private catOrigami: Array<Categorie>;
+
   constructor(private origamiService: OrigamiService) {
   }
 
@@ -19,6 +22,14 @@ export class OrigamiComponent implements OnInit {
 
   public list() {
     return this.origamiService.findAll();
+  }
+
+  public listCat() {
+    return this.origamiService.findCategories();
+  }
+
+  public categories(id:number) {
+    this.catOrigami = this.origamiService.findById(id).categories
   }
 
   public add() {

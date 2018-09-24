@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
 import {Origami} from './origami';
+import {Categorie} from './categorie';
 import {AppConfigService} from '../app-config.service';
 
 
@@ -9,17 +10,29 @@ import {AppConfigService} from '../app-config.service';
 export class OrigamiService {
   origamis: Array<Origami> = new Array<Origami>();
   apiUrl = '';
+  categories: Array<Categorie> = new Array<Categorie>();
 
   constructor(private http: Http, private appConfig: AppConfigService) {
-    this.apiUrl = appConfig.apiUrl + 'origami/';
+
+    this.apiUrl= appConfig.apiUrl + 'origami/';
 
     this.http
-      .get(this.apiUrl)
+      .get(appConfig.apiUrl + 'origami/')
       .subscribe(resp => this.origamis = resp.json());
+
+
+    this.http
+      .get(appConfig.apiUrl + 'categorie/')
+      .subscribe(resp => this.categories = resp.json());
+
   }
 
   public findAll() {
     return this.origamis;
+  }
+
+  public findCategories(){
+    return this.categories;
   }
 
   public findById(id: number, http?: boolean): any {

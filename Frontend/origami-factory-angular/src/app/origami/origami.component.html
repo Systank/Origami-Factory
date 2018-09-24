@@ -13,6 +13,7 @@
       <th>Actif</th>
       <th>Lien Youtube</th>
       <th>Image de l'Origami</th>
+      <td>Catégories de l'origami</td>
     </tr>
     </thead>
     <tbody>
@@ -26,11 +27,12 @@
       <td>{{origami.actif}}</td>
       <td>{{origami.youtube}}</td>
       <td>{{origami.imageOri}}</td>
+      <td><a class="btn btn-warning" (click)="categories(origami.id)">Details</a></td>
       <td><a class="btn btn-info" (click)="edit(origami.id)">Editer</a></td>
       <td><a class="btn btn-danger" (click)="delete(origami.id)">Supprimer</a></td>
     </tr>
     <tr>
-      <td colspan="11"><a class="btn btn-success" (click)="add()">Ajouter</a></td>
+      <td colspan="12"><a class="btn btn-success" (click)="add()">Ajouter</a></td>
     </tr>
     <tr *ngIf="formOrigami">
       <td>{{formOrigami.id}}</td>
@@ -42,11 +44,26 @@
       <td><input type="text" [(ngModel)]="formOrigami.actif"/></td>
       <td><input type="text" [(ngModel)]="formOrigami.youtube"/></td>
       <td><input type="text" [(ngModel)]="formOrigami.imageOri"/></td>
+      <td><select class="form-control"
+                  required >
+        <option *ngFor="let cat of listCat" [value]="cat.id">{{cat.nom}}</option>
+      </select></td>
       <td><a class="btn btn-info" (click)="save()">Valider</a></td>
       <td><a class="btn btn-warning">Annuler</a></td>
     </tr>
     </tbody>
   </table>
-
+  <table *ngIf="catOrigami" class="table table-striped">
+    <thead>
+    <tr>
+      <th>Catégories de l'origami sélectionné</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td *ngFor="let categorie of catOrigami">{{categorie.nom}}</td>
+    </tr>
+    </tbody>
+  </table>
 </div>
 
