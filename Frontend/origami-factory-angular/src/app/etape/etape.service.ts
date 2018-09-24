@@ -42,7 +42,7 @@ export class EtapeService {
       if (!etape.id) {
         this.http
           .post(this.apiUrl, etape)
-          .subscribe(resp => this.etapes.push(etape),
+          .subscribe(resp => this.etapes.push(resp.json()),
             err => console.log(err));
       } else {
         this.http
